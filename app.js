@@ -10,7 +10,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , passport = require('passport');
-
+var flash   = require('connect-flash');
 var admin = require('./routes/admin');
 
 require('./config/passport')(passport);
@@ -33,6 +33,7 @@ app.use(express.methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 // development only
 if ('development' == app.get('env')) {
@@ -54,9 +55,19 @@ app.post('/signin',passport.authenticate('local-login',{ successRedirect:'/searc
     failureRedirect:'/signin',
     failureFlash:true}) 
     );
-app.get('/search', user.search);
+app.get('/search',isLoggedIn, user.search);
 
 
+
+function isLoggedIn(req, res, next) {
+
+	// if user is authenticated in the session, carry on
+	if (req.isAuthenticated())
+		return next();
+
+	// if they aren't redirect them to the home page
+	res.redirect('/');
+}
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
