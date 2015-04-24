@@ -111,8 +111,7 @@ exports.orderDetail = function(req, res) {
 	var oid = req.params.oid;
 	console.log("oid = " + oid);
 	var sql = "select * from User u, History h, Flight f" +
-			  " where u.User_id = " + oid + " and h.History_user_id = " 
-			  + oid + " and h.History_flight_id = f.Flight_id";
+			  " where h.History_id = " + oid + " and h.History_user_id = u.User_id and h.History_flight_id = f.Flight_id";
 	console.log("sql is: " + sql);
 	var session = req.session;
 	
