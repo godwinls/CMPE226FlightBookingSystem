@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<%- include header_admin %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<style>
+		body 		{ padding-top:80px; }
+	</style>
+  </head>
+  
+  <body>
+  <div class="col-sm-6 col-sm-offset-3">
+  <center>
+  	<h2>User Detail</h2>
+  	<h4>You can track user's order history or delete this user.</h4>
+  </center>
+  <div class="panel panel-primary">
+  	<div class="panel-heading">Personal Information</div>
+  	<div class="panel-body">
+  		<% for(var i = 0; i < show.length; i++) {%>
+		  	<b>UserID:</b> <%= show[i].User_id%>
+	  		<br><b>First Name:</b> <%= show[i].User_fname%>
+	  		<br><b>Last Name:</b> <%= show[i].User_lname%>
+	  		<br><b>Birthday:</b> <%= show[i].User_birth %>
+	  		<br><b>Identity Type:</b> <%= show[i].User_identi_type %>
+	  		<br><b>Identity Number:</b> <%= show[i].User_identi %>
+	  	<% } %>
+  	</div>
+  </div>
+  
+  <div class="panel panel-primary">
+  	<div class="panel-heading">Contact Information</div>
+  	<div class="panel-body">
+  		<% for(var i = 0; i < show.length; i++) {%>
+		  	<b>Email:</b> <%= show[i].User_email%>
+	  		<br><b>Address:</b> <%= show[i].User_address%>
+	  		<br><b>Zip:</b> <%= show[i].User_zip%>
+	  	<% } %>
+  	</div>
+  </div>
+  
+  <div class="panel panel-primary">
+  	<div class="panel-heading">Order History</div>
+  	<div class="panel-body">
+  	  <table class="table table-striped">
+  		<thead>
+	      <tr>
+	        <th>Order ID</th>
+	        <th>Flight ID</th>
+	        <th>Flight Number</th>
+	        <th>Order price ($)</th>
+	        <th>Order placed time</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+  		<% for(var i = 0; i < show.length; i++) {%>
+  			<tr>
+		  		<td><a href="/orderDetail/<%= show[i].History_id%>"><%= show[i].History_id%></a></td>
+	  			<td><%= show[i].Flight_id%></td>
+	  			<td><%= show[i].Flight_num%></td>
+	  			<td><%= show[i].History_price%></td>
+	  			<td><%= show[i].History_time%></td>
+	  		</tr>
+	  	<% } %>
+	  </table>
+  	</div>
+  </div>
+  
+  <center>
+	<form method="get" action="/toAdminHomepage">
+		<p><input class="btn btn-primary sd-sgnBtn" type="submit" name="toHomepage" value="Homepage"></p>
+	</form>
+  </center>
+  
+  </div>
+  </body>
+</html>

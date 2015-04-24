@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<%- include header_admin %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<style>
+		body 		{ padding-top:80px; }
+	</style>
+  </head>
+  
+  <body>
+  <center>
+  	<h2>User Management</h2>
+  	<h4>Click user ID to see more details!</h4>
+  </center>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+   		<h3 class="panel-title">Users List</h3>
+  	</div>
+  	<div class="panel-body">
+  	<table class="table table-striped">
+  		<thead>
+	      <tr>
+	        <th>ID</th>
+	        <th>Firstname</th>
+	        <th>Lastname</th>
+	        <th>Email</th>
+	        <th>Birthday</th>
+	        <th>Address</th>
+	        <th>Zip</th>
+	        <th>Identity type</th>
+	        <th>Identity Number</th>
+	      </tr>
+	    </thead>
+  	
+	  	<tbody>
+	  		<% for(var i = 0; i < show.length; i++){%>
+	  		<tr>
+				<td><%= show[i].User_id %></td>
+				<td><%= show[i].User_fname %></td>
+				<td><%= show[i].User_lname %></td>
+				<td><%= show[i].User_email %></td>
+		    	<td><%= show[i].User_birth %></td>
+		  		<td><%= show[i].User_address %></td> 
+		  		<td><%= show[i].User_zip %></td>
+		  	    <td><%= show[i].User_identi_type %></td>
+		  	    <td><%= show[i].User_identi %></td>
+		  	    <td>
+		  	    	<span>
+		  	    		<form action="/userDetail/<%= show[i].User_id %>" method="get">
+		  	    			<input type="submit" class="btn btn-primary btn-xs" name = "detail" value = "More Detail"/>
+		  				</form>
+		  	    	</span>
+		  	    </td>
+	  	    </tr>  
+	  		<% } %>	
+	  	</tbody>
+  	</table>
+  	</div>
+</div>
+<center>
+<form method="get" action="/toAdminHomepage">
+	<p><input class="btn btn-primary sd-sgnBtn" type="submit" name="toHomepage" value="Homepage"></p>
+</form>
+</center>
+</body>
+</html>

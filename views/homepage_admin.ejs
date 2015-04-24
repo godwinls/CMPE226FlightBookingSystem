@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<%- include header_admin %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<style>
+		body 		{ padding-top:80px; }
+	</style>
+  </head>
+  
+  <body>
+
+  	<div class="col-sm-6 col-sm-offset-3">
+  		<h2>Homepage</h2>
+  		<h4>Welcome back!</h4>
+	  	<form method="get" action="/listAllUsers">
+	         <p><input class="btn btn-primary sd-sgnBtn" type="submit" name="userManagement" value="User Management"/></p>
+	    </form><br>
+	    <form method="get" action="">
+	        <p><input class="btn btn-primary sd-sgnBtn" type="submit" name="flightManagement" value="Flight Management"/></p>
+	    </form><br>
+	    <form method="get" action="">
+	        <p><input class="btn btn-primary sd-sgnBtn" type="submit" name="addFlight" value="Add New Flight"/></p>
+	    </form><br>
+	    <form method="get" action="/signOut_admin">
+	    	<p><input class="btn btn-primary sd-sgnBtn" type="submit" name="signOut" value="Sign Out"></p>
+	    </form>
+	</div>
+  </body>
+</html>
