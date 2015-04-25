@@ -11,7 +11,8 @@ var express = require('express')
   , path = require('path')
   , passport = require('passport');
 
-var admin = require('./routes/admin');
+var admin = require('./routes/admin')
+  , passport = require('passport');
 
 require('./config/passport')(passport);
 var app = express();
