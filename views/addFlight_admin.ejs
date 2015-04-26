@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<%- include header_admin %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<style>
+		body 		{ padding-top:80px; }
+	</style>
+	
+	<script>
+	  function addSuccess() {
+	      alert("Add a new flight successful!");
+	      window.location = '/homepage_admin';
+	  }	
+	  
+	  function validateForm() {
+	      var num = $("#flightNum").val();
+	      if(var == null || var.length == 0) {
+	          alert("Please enter flight number!");
+	      }
+	  }
+	</script>
+  </head>
+  
+  <body>
+  <center>
+  	<h2>Add New Flight</h2>
+  	<h4>Please fill out the blank.</h4>	
+  </center>
+  
+  <div class="col-sm-6 col-sm-offset-3">
+  <form action="/addFlight" method="post" onsubmit="return validateForm();">
+  	<div class="form-group">
+    	<label for="flightNum">Flight Number</label>
+    	<input type="flightNum" class="form-control" id="flightNum" name="flightNum" placeholder="Flight Number">
+ 	</div>
+  	<div class="form-group">
+    	<label for="scity">Flying From</label>
+    	<input type="scity" class="form-control" id="scity" name="scity" placeholder="Flying From">
+  	</div>
+  	<div class="form-group">
+    	<label for="ecity">Flying To</label>
+    	<input type="ecity" class="form-control" id="ecity" name="ecity" placeholder="Flying To">
+  	</div>
+  	<div class="form-group">
+    	<label for="stime">Departing</label>
+    	<input type="stime" class="form-control" id="stime" name="stime" placeholder="Departing 2015-01-01 23:59:59">
+  	</div>
+  	<div class="form-group">
+    	<label for="etime">Arriving</label>
+    	<input type="etime" class="form-control" id="etime" name="etime" placeholder="Arriving 2015-01-01 23:59:59">
+  	</div>
+  	<div class="form-group">
+    	<label for="seats">Seats</label>
+    	<input type="seats" class="form-control" id="seats" name="seats" placeholder="Seats">
+  	</div>
+  	<div class="form-group">
+    	<label for="model">Flight Model</label>
+    	<input type="model" class="form-control" id="model" name="model" placeholder="Flight Model">
+  	</div>
+  	<div class="form-group">
+    	<label for="price">Price ($)</label>
+    	<input type="price" class="form-control" id="price" name="price" placeholder="Price">
+  	</div>
+  	
+  	<center>
+  		<button type="submit" class="btn btn-primary">Add!</button>
+  	</center>
+  </form>
+  <br>
+  <center>
+	  <form method="get" action="/toAdminHomepage">
+		<p><input class="btn btn-primary sd-sgnBtn" type="submit" name="toHomepage" value="Homepage"></p>
+	  </form>
+  </center>
+  </div>
+  </body>
+</html>

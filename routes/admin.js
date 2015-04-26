@@ -36,7 +36,7 @@ exports.afterSignIn_admin = function(req, res) {
 
 exports.signOut_admin = function(req, res) {
 	req.session.admin = null;
-	res.render('signIn_admin', {
+	res.render('index', {
 		title : 'flightbooking'
 	});
 }
@@ -61,6 +61,32 @@ function getAllUsers(callback) {
 exports.listAllUsers = function(req, res) {
 	getAllUsers(function(err, result) {
 		res.render('userManagement', {
+			title : 'flightbooking',
+			show : result
+		});
+	});
+}
+
+
+function getAllFlights(callback) {
+	var allFlights = "select * from Flight";
+	console.log("query is: " + allFlights);
+	db.getConnection(function(err, connection) {
+		var query = connection.query(allFlights, function(err, result) {
+			if(err) {
+				console.log("err message: " + err.message);
+			}else {
+				callback(err, result);
+				console.log("\nConnection closed...");
+				connection.release();
+			}
+		});
+	});	
+}
+
+exports.listAllFlights = function(req, res) {
+	getAllFlights(function(err, result) {
+		res.render('flightManagement', {
 			title : 'flightbooking',
 			show : result
 		});
@@ -129,5 +155,56 @@ exports.orderDetail = function(req, res) {
 				});
 			}
 		});
+	});
+}
+
+exports.toAddFlight = function(req, res) {
+	res.render('addFlight_admin', {
+		title : 'flightbooking'
+	});
+}
+
+exports.addFlight = function(req, res) {
+	var num = req.param("flightNum");
+	var scity = req.param("scity");
+	var ecity = req.param("ecity");
+	var stime = req.param("stime");
+	var etime = req.param("etime");
+	var seats = req.param("seats");
+	var model = req.param("model");
+	var price = req.param("price");
+	if(num.length > 0 && scity.length > 0 && ecity.length > 0 && stime.length > 0 && etime.length > 0 && seats.length > 0 && model.length > 0 && price.length > 0) {
+		var sql = "insert into Flight (Flight_num, Flight_scity, Flight_ecity, Flight_stime, " +
+				  "Flight_etime, Flight_seats, Flight_model, Flight_price) values ('"
+				  + num + "', '" + scity + "', '" + ecity + "', '" + stime + "', '" + etime + "', "
+				  + seats + ", '" + model + "', '" + price + "')";
+		console.log("sql is :: " + sql);
+		
+		db.getConnection(function(err, connection) {
+			var query = connection.query(sql, function(err, result) {
+				if(err){
+					console.log("err message: " + err.message);
+				}else{
+					//console.log("info:"+result);
+					console.log("\nConnection closed...");
+					connection.release();
+					res.render('homepage_admin', {
+						title : 'flightbooking'
+					});
+				}
+			})
+		})
+	}else {
+		res.render('addFlight_admin', {
+			error : "You have blank space!"
+		})
+	}
+}
+
+exports.editFlight_admin = function(req, res) {
+	var fid = req.params.fid;
+	console.log("fid = " + fid);
+	res.render('editFlight_admin', {
+		title : 'flightbooking'
 	});
 }

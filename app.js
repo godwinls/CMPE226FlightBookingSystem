@@ -48,6 +48,10 @@ app.get('/toAdminHomepage', admin.toAdminHomepage);
 app.get('/listAllUsers', admin.listAllUsers);
 app.get('/userDetail/:id', admin.userDetail);
 app.get('/orderDetail/:oid', admin.orderDetail);
+app.get('/toAddFlight', admin.toAddFlight);
+app.post('/addFlight', admin.addFlight);
+app.get('/listAllFlights', admin.listAllFlights);
+app.get('/editFlight_admin/:fid', admin.editFlight_admin);
 
 
 app.get('/signin',user.signin);

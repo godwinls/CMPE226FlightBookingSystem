@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<%- include header_admin %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<style>
+		body 		{ padding-top:80px; }
+	</style>
+  </head>
+  
+  <body>
+  <center>
+  	<h2>Flight Management</h2>
+  	<h4>Click to edit the details.</h4>
+  </center>
+
+
+  <div class="panel panel-primary">
+	<div class="panel-heading">
+   		<h3 class="panel-title">Flights List</h3>
+  	</div>
+  	<div class="panel-body">
+  	<table class="table table-striped">
+  		<thead>
+	      <tr>
+	        <th>ID</th>
+	        <th>Flight Number</th>
+	        <th>Flying From</th>
+	        <th>Flying to</th>
+	        <th>Departing</th>
+	        <th>Arriving</th>
+	        <th>Seats</th>
+	        <th>Flight Model</th>
+	        <th>Price ($)</th>
+	      </tr>
+	    </thead>
+  	
+	  	<tbody>
+	  		<% for(var i = 0; i < show.length; i++){%>
+	  		<tr>
+				<td><%= show[i].Flight_id %></td>
+				<td><%= show[i].Flight_num %></td>
+				<td><%= show[i].Flight_scity %></td>
+				<td><%= show[i].Flight_ecity %></td>
+		    	<td><%= show[i].Flight_stime %></td>
+		  		<td><%= show[i].Flight_etime %></td> 
+		  		<td><%= show[i].Flight_seats %></td>
+		  	    <td><%= show[i].Flight_model %></td>
+		  	    <td><%= show[i].Flight_price %></td>
+		  	    <td>
+		  	    	<span>
+		  	    		<form action="/editFlight_admin/<%= show[i].Flight_id %>" method="get">
+		  	    			<input type="submit" class="btn btn-primary btn-xs" name = "edit" value = "Edit"/>
+		  				</form>
+		  	    	</span>
+		  	    </td>
+	  	    </tr>  
+	  		<% } %>	
+	  	</tbody>
+  	</table>
+  	</div>
+  </div>
+  
+  <center>
+	  <form method="get" action="/toAdminHomepage">
+		<p><input class="btn btn-primary sd-sgnBtn" type="submit" name="toHomepage" value="Homepage"></p>
+	  </form>
+  </center>
+  
+</body>
+</html>
