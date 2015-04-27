@@ -15,6 +15,16 @@
 	<style>
 		body 		{ padding-top:80px; }
 	</style>
+	<script>
+		$(document).ready(function(){
+			
+			$(".testing").click(function(){
+				var value = $(this).html();
+			});
+			
+		});
+		
+	</script>
   </head>
   
   <body>
@@ -38,9 +48,14 @@
 	        <th>Flying to</th>
 	        <th>Departing</th>
 	        <th>Arriving</th>
-	        <th>Seats</th>
 	        <th>Flight Model</th>
-	        <th>Price ($)</th>
+	        <th>Flight Company</th>
+	        <th>Economy Seats</th>
+	        <th>Business Seats</th>
+	        <th>First Seats</th>
+	        <th>Economy Price ($)</th>
+	        <th>Business Price ($)</th>
+	        <th>First Price ($)</th>
 	      </tr>
 	    </thead>
   	
@@ -48,17 +63,22 @@
 	  		<% for(var i = 0; i < show.length; i++){%>
 	  		<tr>
 				<td><%= show[i].Flight_id %></td>
-				<td><%= show[i].Flight_num %></td>
-				<td><%= show[i].Flight_scity %></td>
+				<td class="testing"><%= show[i].Flight_num %></td>
+				<td class="example"><%= show[i].Flight_scity %></td>
 				<td><%= show[i].Flight_ecity %></td>
 		    	<td><%= show[i].Flight_stime %></td>
 		  		<td><%= show[i].Flight_etime %></td> 
-		  		<td><%= show[i].Flight_seats %></td>
-		  	    <td><%= show[i].Flight_model %></td>
-		  	    <td><%= show[i].Flight_price %></td>
+		  		<td><%= show[i].Flight_model %></td>
+		  		<td><%= show[i].Flight_company %></td>
+		  		<td><%= show[i].Flight_Eseats %></td>
+		  		<td><%= show[i].Flight_Bseats %></td>
+		  		<td><%= show[i].Flight_Fseats %></td>
+		  	    <td><%= show[i].Flight_Eprice %></td>
+		  	    <td><%= show[i].Flight_Bprice %></td>
+		  	    <td><%= show[i].Flight_Fprice %></td>
 		  	    <td>
 		  	    	<span>
-		  	    		<form action="/editFlight_admin/<%= show[i].Flight_id %>" method="get">
+		  	    		<form action="/toEditFlight_admin/<%= show[i].Flight_id %>" method="get">
 		  	    			<input type="submit" class="btn btn-primary btn-xs" name = "edit" value = "Edit"/>
 		  				</form>
 		  	    	</span>

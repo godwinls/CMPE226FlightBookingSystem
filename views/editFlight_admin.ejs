@@ -18,7 +18,76 @@
   </head>
   
   <body>
-  	<h2>Hohohoho!!</h2>
+  	<center>
+  		<h2>Update Flight Information</h2>
+  		<h4>You can update flight information.</h4>
+    </center>
+
+  	<div class="col-sm-6 col-sm-offset-3">
+	  <form action="/editFlight/<%= show[0].Flight_id%>" method="post" onsubmit="return validateForm();">
+	  	<div class="form-group">
+	    	<label for="flightNum">Flight Number</label>
+	    	<input type="flightNum" class="form-control" id="flightNum" name="flightNum"  value="<%= show[0].Flight_num%>" placeholder="Flight Number">
+	 	</div>
+	  	<div class="form-group">
+	    	<label for="scity">Flying From</label>
+	    	<input type="scity" class="form-control" id="scity" name="scity" value="<%= show[0].Flight_scity%>" placeholder="Flying From">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="ecity">Flying To</label>
+	    	<input type="ecity" class="form-control" id="ecity" name="ecity" value="<%= show[0].Flight_ecity%>" placeholder="Flying To">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="stime">Departing</label>
+	    	<input type="stime" class="form-control" id="stime" name="stime" value="<%= show[0].Flight_stime%>" placeholder="Departing 2015-01-01 23:59:59">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="etime">Arriving</label>
+	    	<input type="etime" class="form-control" id="etime" name="etime" value="<%= show[0].Flight_etime%>" placeholder="Arriving 2015-01-01 23:59:59">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="model">Flight Model</label>
+	    	<input type="model" class="form-control" id="model" name="model" value="<%= show[0].Flight_model%>" placeholder="Flight Model">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="company">Flight Company</label>
+	    	<input type="company" class="form-control" id="company" name="company" value="<%= show[0].Flight_company%>" placeholder="Flight company">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="eseats">Economy Seats</label>
+	    	<input type="eseats" class="form-control" id="eseats" name="eseats" value="<%= show[0].Flight_Eseats%>" placeholder="Economy Seats">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="bseats">Business Seats</label>
+	    	<input type="bseats" class="form-control" id="bseats" name="bseats" value="<%= show[0].Flight_Bseats%>" placeholder="Business Seats">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="fseats">First Seats</label>
+	    	<input type="fseats" class="form-control" id="fseats" name="fseats" value="<%= show[0].Flight_Fseats%>" placeholder="First Seats">
+	  	</div>	  	
+	  	<div class="form-group">
+	    	<label for="eprice">Economy Price ($)</label>
+	    	<input type="eprice" class="form-control" id="eprice" name="eprice" value="<%= show[0].Flight_Eprice%>" placeholder="Economy Price">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="bprice">Business Price ($)</label>
+	    	<input type="bprice" class="form-control" id="bprice" name="bprice" value="<%= show[0].Flight_Bprice%>" placeholder="Business Price">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="fprice">First Price ($)</label>
+	    	<input type="fprice" class="form-control" id="fprice" name="fprice" value="<%= show[0].Flight_Fprice%>" placeholder="First Price">
+	  	</div>
+	  	
+	  	<center>
+	  		<button type="submit" class="btn btn-primary">Update!</button>
+	  	</center>
+	  </form>
+	  <br>
+	  <center>
+		  <form method="get" action="/toAdminHomepage">
+			<p><input class="btn btn-primary sd-sgnBtn" type="submit" name="toHomepage" value="Homepage"></p>
+		  </form>
+  	  </center>
 
 
   </body>
