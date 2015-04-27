@@ -178,14 +178,24 @@ exports.addFlight = function(req, res) {
 	var ecity = req.param("ecity");
 	var stime = req.param("stime");
 	var etime = req.param("etime");
-	var seats = req.param("seats");
 	var model = req.param("model");
-	var price = req.param("price");
-	if(num.length > 0 && scity.length > 0 && ecity.length > 0 && stime.length > 0 && etime.length > 0 && seats.length > 0 && model.length > 0 && price.length > 0) {
+	var company = req.param("company");
+	var eseats = req.param("eseats");
+	var bseats = req.param("bseats");
+	var fseats = req.param("fseats");
+	var eprice = req.param("eprice");
+	var bprice = req.param("bprice");
+	var fprice = req.param("fprice");
+
+	if(num.length > 0 && scity.length > 0 && ecity.length > 0 && stime.length > 0 && etime.length > 0 
+			&& eseats.length > 0 && bseats.length > 0 && fseats.length > 0 && model.length > 0 
+			&& company.length > 0 && eprice.length > 0 && bprice.length > 0 && fprice.length > 0) {
 		var sql = "insert into Flight (Flight_num, Flight_scity, Flight_ecity, Flight_stime, " +
-				  "Flight_etime, Flight_seats, Flight_model, Flight_price) values ('"
+				  "Flight_etime, Flight_Eseats, Flight_Bseats, Flight_Fseats, Flight_model, Flight_company, " +
+				  "Flight_Eprice, Flight_Bprice, Flight_Fprice) values ('"
 				  + num + "', '" + scity + "', '" + ecity + "', '" + stime + "', '" + etime + "', "
-				  + seats + ", '" + model + "', '" + price + "')";
+				  + eseats + ", " + bseats + ", " + fseats + ", '" + model + "', '" + company + "', " 
+				  + eprice + ", "+ bprice + ", " + fprice +")";
 		console.log("sql is :: " + sql);
 		
 		db.getConnection(function(err, connection) {
@@ -221,8 +231,7 @@ exports.addFlight = function(req, res) {
 //	res.data.push(item);
 //}
 
-//finish this later!
-exports.editFlight_admin = function(req, res) {
+exports.toEditFlight_admin = function(req, res) {
 	var fid = req.params.fid;
 	console.log("fid = " + fid);
 	var sql = "select * from Flight where Flight_id=" + fid;
@@ -242,9 +251,64 @@ exports.editFlight_admin = function(req, res) {
 				});
 			}
 		});
+	});	
+}
+
+function convert(date){
+	var y = date.getFullYear();
+	var m = date.getMonth() + 1;
+	var d = date.getDate();
+	var h = date.getHours();
+	var min = date.getMinutes();
+	var s = date.getSeconds();
+	
+	return y + "-" + m + "-" + d + " " + h + ":" + min + ":" + s;
+}
+
+exports.editFlight = function(req, res) {
+	var fid = req.params.fid;
+	var num = req.param("flightNum");
+	var scity = req.param("scity");
+	var ecity = req.param("ecity");
+	var stime = req.param("stime");
+	stime = convert(new Date(stime));
+	//console.log("stime :: " + stime);	
+	var etime = req.param("etime");
+	etime = convert(new Date(etime));
+	//console.log("etime :: " + etime);	
+	var model = req.param("model");
+	var company = req.param("company");
+	var eseats = req.param("eseats");
+	var bseats = req.param("bseats");
+	var fseats = req.param("fseats");
+	var eprice = req.param("eprice");
+	var bprice = req.param("bprice");
+	var fprice = req.param("fprice");
+	
+	var sql = "update Flight set Flight_num='" + num + "', Flight_scity='" + scity + "', Flight_ecity='"
+			  + ecity + "', Flight_stime='" + stime + "', Flight_etime='" + etime + "', Flight_model='" 
+			  + model + "', Flight_company='" + company + "', Flight_Eseats="
+			  + eseats + ", Flight_Bseats=" + bseats + ", Flight_Fseats=" + fseats + ", Flight_Eprice=" 
+			  + eprice + ", Flight_Bprice=" + bprice + ", Flight_Fprice=" + fprice + " where Flight_id="
+			  + fid;
+	console.log("sql :: " + sql);
+	
+	db.getConnection(function(err, connection) {
+		var query = connection.query(sql, function(err, result) {
+			if(err) {
+				console.log("err message: " + err.message);
+			}else{
+				console.log("\nConnection closed...");
+				connection.release();
+				getAllFlights(function(err, result) {
+					res.render('flightManagement', {
+						title : 'flightbooking',
+						show : result
+					});
+				});	
+			}
+		});
 	});
-	
-	
 }
 
 exports.deleteUser = function(req, res) {

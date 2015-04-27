@@ -55,7 +55,8 @@ app.get('/orderDetail/:oid', admin.orderDetail);
 app.get('/toAddFlight', admin.toAddFlight);
 app.post('/addFlight', admin.addFlight);
 app.get('/listAllFlights', admin.listAllFlights);
-app.get('/editFlight_admin/:fid', admin.editFlight_admin);
+app.get('/toEditFlight_admin/:fid', admin.toEditFlight_admin);
+app.post('/editFlight/:fid', admin.editFlight);
 app.get('/deleteUser/:id', admin.deleteUser);
 app.post('/cancelOrder/:oid', admin.cancelOrder);
 
