@@ -15,6 +15,16 @@
 	<style>
 		body 		{ padding-top:80px; }
 	</style>
+	<script>
+		$(document).ready(function(){
+			
+			$(".testing").click(function(){
+				var value = $(this).html();
+			});
+			
+		});
+		
+	</script>
   </head>
   
   <body>
@@ -48,8 +58,8 @@
 	  		<% for(var i = 0; i < show.length; i++){%>
 	  		<tr>
 				<td><%= show[i].Flight_id %></td>
-				<td><%= show[i].Flight_num %></td>
-				<td><%= show[i].Flight_scity %></td>
+				<td class="testing"><%= show[i].Flight_num %></td>
+				<td class="example"><%= show[i].Flight_scity %></td>
 				<td><%= show[i].Flight_ecity %></td>
 		    	<td><%= show[i].Flight_stime %></td>
 		  		<td><%= show[i].Flight_etime %></td> 

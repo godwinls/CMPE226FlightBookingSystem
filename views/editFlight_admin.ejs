@@ -20,6 +20,46 @@
   <body>
   	<h2>Hohohoho!!</h2>
 
+  	<div class="col-sm-6 col-sm-offset-3">
+	  <form action="/addFlight" method="post" onsubmit="return validateForm();">
+	  	<div class="form-group">
+	    	<label for="flightNum">Flight Number</label>
+	    	<input type="flightNum" class="form-control" id="flightNum" name="flightNum"  value="<%= show[0].Flight_num %>" placeholder="Flight Number">
+	 	</div>
+	  	<div class="form-group">
+	    	<label for="scity">Flying From</label>
+	    	<input type="scity" class="form-control" id="scity" name="scity" placeholder="Flying From">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="ecity">Flying To</label>
+	    	<input type="ecity" class="form-control" id="ecity" name="ecity" placeholder="Flying To">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="stime">Departing</label>
+	    	<input type="stime" class="form-control" id="stime" name="stime" placeholder="Departing 2015-01-01 23:59:59">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="etime">Arriving</label>
+	    	<input type="etime" class="form-control" id="etime" name="etime" placeholder="Arriving 2015-01-01 23:59:59">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="seats">Seats</label>
+	    	<input type="seats" class="form-control" id="seats" name="seats" placeholder="Seats">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="model">Flight Model</label>
+	    	<input type="model" class="form-control" id="model" name="model" placeholder="Flight Model">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="price">Price ($)</label>100
+	    	<input type="price" class="form-control" id="price" name="price" placeholder="Price">
+	  	</div>
+	  	
+	  	<center>
+	  		<button type="submit" class="btn btn-primary">Add!</button>
+	  	</center>
+	  </form>
+
 
   </body>
 </html>

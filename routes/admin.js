@@ -102,31 +102,33 @@ exports.toAdminHomepage = function(req, res) {
 exports.userDetail = function(req, res) {
 	var id = req.params.id;
 	console.log("id = " + id);
-	var sql = "select * from User u, History h, Flight f" +
-			  " where u.User_id = " + id + " and h.History_user_id = " 
-			  + id + " and h.History_flight_id = f.Flight_id";
-	console.log("sql is: " + sql);
+	var sqlUser = "select * from User u where u.User_id = " + id;
+	var sqlOrder = "select * from History h, Flight f" +
+				   " where h.History_user_id = " + id + " and h.History_flight_id = f.Flight_id";
+
+	console.log("sqlUser is: " + sqlUser);
+	console.log("sqlOrder is: " + sqlOrder);
 	var session = req.session;
 	
 	db.getConnection(function(err, connection) {
-		var query = connection.query(sql, function(err, results) {
+		var query1 = connection.query(sqlUser, function(err, resultsU) {
 			if(err){
 				console.log("err message: " + err.message);
 			}else{
-				console.log("info:"+results);
-				console.log("\nConnection closed...");
-				connection.release();
-//				req.session.user =  {
-//					ID : id,
-//					fname : results.User_fname,
-//					lname : results.User_lname,
-//					email : results.User_email,
-//				};
-//				console.log("session:: "+JSON.stringify(session));
+				var query2 = connection.query(sqlOrder, function(err, resultsO) {
+					console.log("info:"+resultsO);
+					console.log("\nConnection closed...");
+					connection.release();
+					req.session.user =  {
+						ID : id
+					};
+					console.log("session:: "+JSON.stringify(session));
 
-				res.render('userDetail_admin', {
-					title : 'flightbooking',
-					show : results
+					res.render('userDetail_admin', {
+						title : 'flightbooking',
+						showU : resultsU,
+						showO : resultsO
+					});
 				});
 			}
 		});
@@ -149,6 +151,12 @@ exports.orderDetail = function(req, res) {
 				console.log("info:"+results);
 				console.log("\nConnection closed...");
 				connection.release();
+				
+				req.session.order =  {
+						orderID : oid
+					};
+				console.log("session:: "+JSON.stringify(session));
+					
 				res.render('orderDetail_admin', {
 					title : 'flightbooking',
 					show : results
@@ -201,10 +209,109 @@ exports.addFlight = function(req, res) {
 	}
 }
 
+
+//1,f,10
+//2,y,11
+//
+//var res = {data: []}
+//for( var row : rows){
+//	var item = {};
+//	item.last_name = row.last_name;
+//	item.age = row.age;
+//	res.data.push(item);
+//}
+
+//finish this later!
 exports.editFlight_admin = function(req, res) {
 	var fid = req.params.fid;
 	console.log("fid = " + fid);
-	res.render('editFlight_admin', {
-		title : 'flightbooking'
+	var sql = "select * from Flight where Flight_id=" + fid;
+	console.log("sql is ::" + sql);
+	
+	db.getConnection(function(err, connection) {
+		var query = connection.query(sql, function(err, result) {
+			if(err){
+				console.log("err message: " + err.message);
+			}else{
+				console.log("\nConnection closed...");
+				connection.release();
+				console.log(JSON.stringify(result));
+				res.render('editFlight_admin', {
+					title : 'flightbooking',
+					show : result
+				});
+			}
+		});
+	});
+	
+	
+}
+
+exports.deleteUser = function(req, res) {
+	var id = req.params.id;
+	console.log("user id = " + id);
+	
+	var sql = "delete from User where User_id = " + id;
+	console.log("sql :: " + sql);
+	
+	db.getConnection(function(err, connection) {
+		var query = connection.query(sql, function(err, result) {
+			if(err){
+				console.log("err message: " + err.message);
+			}else{
+				console.log("\nConnection closed...");
+				connection.release();
+				getAllUsers(function(err, results) {
+					res.render('userManagement', {
+						title : 'flightbooking',
+						show : results
+					});
+				});
+			}
+		});	
+	});
+}
+
+exports.cancelOrder = function(req, res) {
+	var oid = req.params.oid;
+	console.log("order id = " + oid);
+	
+	var uid = req.query.uid;
+	console.log("user id = " + uid);
+	
+	var sql = "delete from History where History_id = " + oid;
+	console.log("sql :: " + sql);
+	
+	var sqlUser = "select * from User u where u.User_id = " + uid;
+	var sqlOrder = "select * from History h, Flight f" +
+				   " where h.History_user_id = " + uid + " and h.History_flight_id = f.Flight_id";
+
+	console.log("sqlUser is: " + sqlUser);
+	console.log("sqlOrder is: " + sqlOrder);
+	
+	db.getConnection(function(err, connection) {
+		var query = connection.query(sql, function(err, result) {
+			if(err){
+				console.log("err message: " + err.message);
+			}else{
+				var query1 = connection.query(sqlUser, function(err, resultsU) {
+					if(err){
+						console.log("err message: " + err.message);
+					}else{
+						var query2 = connection.query(sqlOrder, function(err, resultsO) {
+							console.log("info:"+resultsO);
+							console.log("\nConnection closed...");
+							connection.release();
+							
+							res.render('userDetail_admin', {
+								title : 'flightbooking',
+								showU : resultsU,
+								showO : resultsO
+							});
+						});
+					}
+				});
+			}
+		});	
 	});
 }
