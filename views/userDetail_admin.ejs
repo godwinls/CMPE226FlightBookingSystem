@@ -23,18 +23,16 @@
   	<h2>User Detail</h2>
   	<h4>You can track user's order history or delete this user.</h4>
   </center>
-  <form method="post" action="/deleteUser/<%= session.user.ID%>">
   <div class="panel panel-primary">
   	<div class="panel-heading">Personal Information</div>
   	<div class="panel-body">
-  		<% for(var i = 0; i < showU.length; i++) {%>
-		  	<b>UserID:</b> <%= showU[i].User_id%>
-	  		<br><b>First Name:</b> <%= showU[i].User_fname%>
-	  		<br><b>Last Name:</b> <%= showU[i].User_lname%>
-	  		<br><b>Birthday:</b> <%= showU[i].User_birth %>
-	  		<br><b>Identity Type:</b> <%= showU[i].User_identi_type %>
-	  		<br><b>Identity Number:</b> <%= showU[i].User_identi %>
-	  		<br><b>User Card Number:</b> <%= showU[i].User_pay %>
+  		<% for(var i = 0; i < show.length; i++) {%>
+		  	<b>UserID:</b> <%= show[i].User_id%>
+	  		<br><b>First Name:</b> <%= show[i].User_fname%>
+	  		<br><b>Last Name:</b> <%= show[i].User_lname%>
+	  		<br><b>Birthday:</b> <%= show[i].User_birth %>
+	  		<br><b>Identity Type:</b> <%= show[i].User_identi_type %>
+	  		<br><b>Identity Number:</b> <%= show[i].User_identi %>
 	  	<% } %>
   	</div>
   </div>
@@ -42,10 +40,10 @@
   <div class="panel panel-primary">
   	<div class="panel-heading">Contact Information</div>
   	<div class="panel-body">
-  		<% for(var i = 0; i < showU.length; i++) {%>
-		  	<b>Email:</b> <%= showU[i].User_email%>
-	  		<br><b>Address:</b> <%= showU[i].User_address%>
-	  		<br><b>Zip:</b> <%= showU[i].User_zip%>
+  		<% for(var i = 0; i < show.length; i++) {%>
+		  	<b>Email:</b> <%= show[i].User_email%>
+	  		<br><b>Address:</b> <%= show[i].User_address%>
+	  		<br><b>Zip:</b> <%= show[i].User_zip%>
 	  	<% } %>
   	</div>
   </div>
@@ -53,13 +51,6 @@
   <div class="panel panel-primary">
   	<div class="panel-heading">Order History</div>
   	<div class="panel-body">
-  	
-  	<% if(showO.length == 0) {%>
-  			<b>Sorry, this user doesn't have any order!</b>
-  		
-  	<% } else {%>
-  		
-  		
   	  <table class="table table-striped">
   		<thead>
 	      <tr>
@@ -71,25 +62,18 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-  		<% for(var i = 0; i < showO.length; i++) {%>
+  		<% for(var i = 0; i < show.length; i++) {%>
   			<tr>
-		  		<td><a href="/orderDetail/<%= showO[i].History_id%>"><%= showO[i].History_id%></a></td>
-	  			<td><%= showO[i].Flight_id%></td>
-	  			<td><%= showO[i].Flight_num%></td>
-	  			<td><%= showO[i].History_price%></td>
-	  			<td><%= showO[i].History_time%></td>
+		  		<td><a href="/orderDetail/<%= show[i].History_id%>"><%= show[i].History_id%></a></td>
+	  			<td><%= show[i].Flight_id%></td>
+	  			<td><%= show[i].Flight_num%></td>
+	  			<td><%= show[i].History_price%></td>
+	  			<td><%= show[i].History_time%></td>
 	  		</tr>
 	  	<% } %>
 	  </table>
-	  <% } %>
   	</div>
   </div>
-  
-  <center>	
-		<p><input class="btn btn-primary sd-sgnBtn" type="submit" name="delete" value="Delete this User"></p>
-  </center>	
-  </form>
-  
   
   <center>
 	<form method="get" action="/toAdminHomepage">

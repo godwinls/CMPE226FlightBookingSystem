@@ -24,44 +24,25 @@
   	<h4>You can view order detail or cancel this order.</h4>
   </center>
 
-  <form method="post" action="/cancelOrder/<%= session.order.orderID %>?uid=<%= session.user.ID%>">
-  <div class="panel panel-primary"> 
+  <div class="panel panel-primary">
   	<div class="panel-heading">Order Information</div>
   	<div class="panel-body">
-  		<% if(show.length == 0) {%>
-  			<b>Sorry, this user doesn't have any order!</b>
-  		
-  		<% } else {%>
-	  		<% for(var i = 0; i < show.length; i++) {%>
-	  			<b>User ID:</b> <%= show[i].User_id%>
-		  		<br><b>First Name:</b> <%= show[i].User_fname%>
-		  		<br><b>Last Name:</b> <%= show[i].User_lname%>
-		  		<br><b>Identity Type:</b> <%= show[i].User_identi_type %>
-		  		<br><b>Identity Number:</b> <%= show[i].User_identi %>
-		  		<br><b>Payment card Number:</b> <%= show[i].User_pay %>
-		  		<br><b>Order ID:</b> <%= show[i].History_id %>
-		  		<br><b>Flight Number:</b> <%= show[i].Flight_num %>
-		  		<br><b>Flying From:</b> <%= show[i].Flight_scity %>
-		  		<br><b>Flying To:</b> <%= show[i].Flight_ecity %>
-		  		<br><b>Departing:</b> <%= show[i].Flight_stime %>
-		  		<br><b>Arriving:</b> <%= show[i].Flight_etime %>
-		  		<br><b>Flight Model:</b> <%= show[i].Flight_model %>
-		  		<br><b>Flight Company:</b> <%= show[i].Flight_company %>
-		  		<br><b>Seat Type:</b> <%= show[i].History_seat %>
-		  		<br><b>Price ($):</b> <%= show[i].History_price %>
-		  		<br><b>Order Placed time:</b> <%= show[i].History_time %>	  		
-		  	<% } %>
-		<% } %> 
+  		<% for(var i = 0; i < show.length; i++) {%>
+	  		<b>First Name:</b> <%= show[i].User_fname%>
+	  		<br><b>Last Name:</b> <%= show[i].User_lname%>
+	  		<br><b>Identity Type:</b> <%= show[i].User_identi_type %>
+	  		<br><b>Identity Number:</b> <%= show[i].User_identi %>
+	  		<br><b>Flight Number:</b> <%= show[i].Flight_num %>
+	  		<br><b>Flying From:</b> <%= show[i].Flight_scity %>
+	  		<br><b>Flying To:</b> <%= show[i].Flight_ecity %>
+	  		<br><b>Departing:</b> <%= show[i].Flight_stime %>
+	  		<br><b>Arriving:</b> <%= show[i].Flight_etime %>
+	  		<br><b>Flight Model:</b> <%= show[i].Flight_model %>
+	  		<br><b>Price ($):</b> <%= show[i].History_price %>
+	  		<br><b>Order Placed time:</b> <%= show[i].History_time %>	  		
+	  	<% } %>
   	</div>
   </div>
-  <center><p><input class="btn btn-primary sd-sgnBtn" type="submit" name="cancel" value="Cancel This Order"></p></center>	
-  </form>
-  
-  <center>
-	  <form method="get" action="/toAdminHomepage">
-		<p><input class="btn btn-primary sd-sgnBtn" type="submit" name="toHomepage" value="Homepage"></p>
-	  </form>
-  </center>
   
   </div>
 </body>

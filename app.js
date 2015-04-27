@@ -55,10 +55,7 @@ app.get('/orderDetail/:oid', admin.orderDetail);
 app.get('/toAddFlight', admin.toAddFlight);
 app.post('/addFlight', admin.addFlight);
 app.get('/listAllFlights', admin.listAllFlights);
-app.get('/toEditFlight_admin/:fid', admin.toEditFlight_admin);
-app.post('/editFlight/:fid', admin.editFlight);
-app.get('/deleteUser/:id', admin.deleteUser);
-app.post('/cancelOrder/:oid', admin.cancelOrder);
+app.get('/editFlight_admin/:fid', admin.editFlight_admin);
 
 
 app.get('/signin',user.signin);
@@ -66,7 +63,8 @@ app.post('/signin',passport.authenticate('local-login',{ successRedirect:'/searc
     failureRedirect:'/signin',
     failureFlash:true}) 
     );
-app.get('/search',isLoggedIn, user.search);
+app.get('/search', isLoggedIn, user.search);
+app.post('/search', isLoggedIn, user.aftersearch);
 
 
 
