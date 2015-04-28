@@ -66,9 +66,18 @@ app.post('/signin',passport.authenticate('local-login',{ successRedirect:'/searc
     failureRedirect:'/signin',
     failureFlash:true}) 
     );
+app.get('/home',isLoggedIn,user.home);
 app.get('/search',isLoggedIn, user.search);
 app.post('/search',isLoggedIn, user.aftersearch);
 app.post('/order', isLoggedIn, user.order);
+app.get('/confirmOrder/:Uid/:Fid/:price/:type', isLoggedIn, user.confirm);
+app.get('/history',isLoggedIn,user.history);
+app.get('/profile', isLoggedIn,user.profile);
+app.get('/cancel/:Hid', isLoggedIn, user.cancel);
+app.get('/edit', isLoggedIn, user.edit);
+app.post('/edit', isLoggedIn, user.editUser);
+app.get('/logout',isLoggedIn, user.logout);
+
 
 
 

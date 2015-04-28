@@ -1,0 +1,68 @@
+<%- include header_user.ejs%>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<style>
+		body 		{ padding-top:80px; }
+	</style>
+  </head>
+  
+  <body>
+  	<center>
+  		<h2>Update Profile</h2>
+    </center>
+
+  	<div class="col-sm-6 col-sm-offset-3">
+	  <form action="/edit" method="post" onsubmit="return validateForm();">
+	  	<div class="form-group">
+	    	<label for="userEmail">New Email</label>
+	    	<input type="text" class="form-control" name="userEmail" value="<%= show[0].User_email%>" placeholder="New Email">
+	 	</div>
+	  	<div class="form-group">
+	    	<label for="userPassword">New Password</label>
+	    	<input type="text" class="form-control" name="userPassword" value="<%= show[0].User_password%>" placeholder="New Password">
+	 	</div>
+	 	<div class="form-group">
+	    	<label for="userAddress">New Address</label>
+	    	<input type="text" class="form-control" name="userAddress" value="<%= show[0].User_address%>" placeholder="New Address">
+	 	</div>
+	 	<div class="form-group">
+	    	<label for="userZip">New Zip</label>
+	    	<input type="text" class="form-control" name="userZip" value="<%= show[0].User_zip%>" placeholder="New Zip>
+	 	</div>
+	 	<div class="form-group">
+	    	<label for="userPay">New Payment Card Number</label>
+	    	<input type="text" class="form-control" name="userPay" value="<%= show[0].User_pay%>" placeholder="New Payment Card">
+	 	</div>
+	 	<div class="form-group">
+	    	<label for="userIdenty">New ID card Number</label>
+	    	<input type="text" class="form-control" name="userID" value="<%= show[0].User_identi%>" placeholder="New ID Number">
+	 	</div>
+	 	<div class="form-group">
+	    	<label for="userIdentyType">New ID Type</label>
+	    	<input type="text" class="form-control" name="userIDType" value="<%= show[0].User_identi_type%>" placeholder="New ID Type">
+	 	</div>
+	  	
+	  	
+	  	<center>
+	  	<div class="btn-group">
+                <button type="submit" class="btn btn-primary">Update!</button>
+                <a href="/profile" class="btn btn-primary" type="submit" name = "Cancel" value = "Cancel">Cancel</a>
+                </div>
+	  	</center>
+	  </form>
+	  <br>
+
+
+
+  </body>
+</html>

@@ -1,3 +1,21 @@
+<%- include header_user.ejs%>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<style>
+		body 		{ padding-top:80px; }
+	</style>
+  </head>
+ <div class="col-sm-6 col-sm-offset-3">
 <div class="panel panel-primary">
   	<div class="panel-heading">Flight Information</div>
   	<div class="panel-body">
@@ -23,13 +41,14 @@
 	  		 <form action ="/order" method="post">
 	  		<input type="hidden" name="userId" value=<%=userId%>>
 	  		<input type="hidden" name="flightId" value= <%=show[i].Flight_id %>>
-	  		<select name="seatType">
+	  		<select class = "selectpicker" name="seatType">
 	  		<option value="First">First Class</option>
 	  		<option value="Business">Business Class</option>
 	  		<option value="Economy">Economy Class</option>
 	  		</select>
-	  		<input type="submit" value="Book!">	
+	  		<button type="submit" class="btn btn-primary">Book!</button>
 	  		</form>		
 	  	<% } %>
   	</div>
+  </div>
   </div>

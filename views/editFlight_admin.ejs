@@ -77,17 +77,14 @@
 	    	<label for="fprice">First Price ($)</label>
 	    	<input type="fprice" class="form-control" id="fprice" name="fprice" value="<%= show[0].Flight_Fprice%>" placeholder="First Price">
 	  	</div>
-	  	
 	  	<center>
-	  		<button type="submit" class="btn btn-primary">Update!</button>
+	  	<div class="btn-group">
+                <button type="submit" class="btn btn-primary">Update!</button>
+                <a href="/listAllFlights" class="btn btn-primary" type="submit" name = "Cancel" value = "Cancel">Cancel</a>
+                </div>
 	  	</center>
 	  </form>
-	  <br>
-	  <center>
-		  <form method="get" action="/toAdminHomepage">
-			<p><input class="btn btn-primary sd-sgnBtn" type="submit" name="toHomepage" value="Homepage"></p>
-		  </form>
-  	  </center>
+
 
 
   </body>

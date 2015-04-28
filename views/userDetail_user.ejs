@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<%- include header_user.ejs%>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<style>
+		body 		{ padding-top:80px; }
+	</style>
+  </head>
+  
+  <body>
+  <div class="col-sm-6 col-sm-offset-3">
+  <center>
+  	<h2>My Profile</h2>
+  </center>
+  <div class="panel panel-primary">
+  	<div class="panel-heading">My Information</div>
+  	<div class="panel-body">
+  		<% for(var i = 0; i < showU.length; i++) {%>
+		  	<br><b>Email:</b> <%= showU[i].User_email %>
+	  		<br><b>First Name:</b> <%= showU[i].User_fname%>
+	  		<br><b>Last Name:</b> <%= showU[i].User_lname%>
+	  		<br><b>Address:</b> <%= showU[i].User_address %>
+	  		<br><b>Zip:</b> <%= showU[i].User_zip %>
+	  		<br><b>Birthday:</b> <%= showU[i].User_birth %>
+	  		<br><b>Identity Type:</b> <%= showU[i].User_identi_type %>
+	  		<br><b>Identity Number:</b> <%= showU[i].User_identi %>
+	  		<br><b>Card Number:</b> <%= showU[i].User_pay %>
+	  	<% } %>
+  	</div>
+  </div>
+  
+  <form action="/edit" method ="GET">
+  <center>	
+		<p><input class="btn btn-primary sd-sgnBtn" type="submit" name="Edit" value="Make a Change"></p>
+  </center>	
+  </form>
+  
+  
+  
+  </div>
+  </body>
+</html>

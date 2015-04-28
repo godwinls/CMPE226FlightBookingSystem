@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%- include header_user.ejs%>
 <html lang="en">
   <head>
     <meta charset="utf-8"> 
@@ -22,7 +23,7 @@
   	<h2>Order Detail</h2>
   	<h4>You can view order detail to confirm or cancel this order.</h4>
   </center>
-
+<form>
   <div class="panel panel-primary"> 
   	<div class="panel-heading">Order Information</div>
   	<div class="panel-body">
@@ -43,7 +44,13 @@
 	            
   	</div>
   </div>
-
+<center>	
+		<div class="btn-group">
+               <a href="/confirmOrder/<%= user[0].User_id%>/<%= flight[0].Flight_id%>/<%= price%>/<%= seat%>" type="submit" class="btn btn-primary" name="Confirm"  value="Confirm" >Confirm</a>
+               <a href="/search" class="btn btn-primary" type="submit" name = "Cancel" value = "Cancel">Cancel</a>
+</div>
+</center>	
+  </form>
   
   </div>
 </body>

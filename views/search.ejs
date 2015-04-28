@@ -1,19 +1,45 @@
-
+<%- include header_user.ejs%>
 <link href="/bootstrap.css" rel="stylesheet">
 
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<style>
+		body 		{ padding-top:80px; }
+	</style>
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+
+	<h1><span class="fa fa-sign-in"></span> Search Flight</h1>	
 <form action="/search" method="POST">
-<fieldset><legend contenteditable="true">Search Flight</legend>
-
-<p><strong>Departure City&nbsp;</strong>&nbsp; &nbsp;&nbsp;<input name="DepCity" placeholder="Type something…" type="text" /></p>
-
-<p><strong>Arrival City</strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input name= "ArriCity" placeholder="Type something…" type="text" /></p>
-
-<p><b>Departure Time From</b> &nbsp;&nbsp;<input name= "DepTimel" placeholder="Type something…" type="text" /></p>
-
-<p><b>Departure Time To</b> &nbsp;&nbsp;<input name= "DepTimeh" placeholder="Type something…" type="text" /></p>
+<div class="form-group">
+			<label>Departure City</label>
+<input name="DepCity"  class="form-control" placeholder="City Name" type="text" required >
+</div>
+<div class="form-group">
+			<label>Arrival City</label>
+<input name="ArriCity" class="form-control" placeholder="City Name" type="text" required >
+</div>
+<div class="form-group">
+			<label>Departure Time Range From</label>
+<input name="DepTimel" class="form-control" placeholder="yyyy-mm-dd hh:mm:ss" type="text" required >
+</div>
+<div class="form-group">
+			<label>Departure Time Range To</label>
+<input name="DepTimeh" class="form-control" placeholder="yyyy-mm-dd hh:mm:ss" type="text" required >
+</div>
 
 <p>&nbsp;</p>
 
-<p><button class="btn" contenteditable="true" type="submit">Search</button></p>
-</fieldset>
+<button type="submit" class="btn btn-primary btn-lg">Search</button>
 </form>

@@ -54,14 +54,14 @@
 		<% } %> 
   	</div>
   </div>
-  <center><p><input class="btn btn-primary sd-sgnBtn" type="submit" name="cancel" value="Cancel This Order"></p></center>	
-  </form>
-  
   <center>
-	  <form method="get" action="/toAdminHomepage">
-		<p><input class="btn btn-primary sd-sgnBtn" type="submit" name="toHomepage" value="Homepage"></p>
-	  </form>
-  </center>
+	  	<div class="btn-group">
+                <button type="submit" class="btn btn-primary" name="cancel">Cancel this Order!</button>
+                <a href="/userDetail/<%=show[0].User_id%>" class="btn btn-primary" type="submit" name = "Back to User" value = "Back to User">Back to User</a>
+                </div>
+	  	</center>
+  
+  </form>
   
   </div>
 </body>
