@@ -219,18 +219,6 @@ exports.addFlight = function(req, res) {
 	}
 }
 
-
-//1,f,10
-//2,y,11
-//
-//var res = {data: []}
-//for( var row : rows){
-//	var item = {};
-//	item.last_name = row.last_name;
-//	item.age = row.age;
-//	res.data.push(item);
-//}
-
 exports.toEditFlight_admin = function(req, res) {
 	var fid = req.params.fid;
 	console.log("fid = " + fid);
