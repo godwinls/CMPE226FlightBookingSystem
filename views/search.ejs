@@ -1,48 +1,19 @@
-<%- include header_user %>
+
 <link href="/bootstrap.css" rel="stylesheet">
-<body>
-<div style="padding:30px">
-</div>
 
-<br><br>
-<div class="container">
-    <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Search Movies</h1>
-    </div>
+<form action="/search" method="POST">
+<fieldset><legend contenteditable="true">Search Flight</legend>
 
+<p><strong>Departure City&nbsp;</strong>&nbsp; &nbsp;&nbsp;<input name="DepCity" placeholder="Type something…" type="text" /></p>
 
-<label> Search Attribute </label>
+<p><strong>Arrival City</strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input name= "ArriCity" placeholder="Type something…" type="text" /></p>
 
-<form class="form-inline" role="form" method="post" action="/searchMovie">
-  <select class="form-control" id="searchparam" name="searchparam">
-                    <option value="id">id</option>
-                    <option value="MovieName">MovieName</option>
-                    <option value="MovieBanner">MovieBanner</option>
-                    <option value="ReleaseDate">ReleaseDate</option>
-                    <option value="RentAmount">RentAmt</option>
-                    <option value="AvailableCopies">AvlCopies</option>
-                    <option value="category">category</option>
-  </select> &nbsp&nbsp&nbsp&nbsp
-  <div class="form-group">
-    <label class="sr-only">Search String</label>
-    <input type="text" class="form-control" placeholder="Enter Search String" id="str" name="str">
-  </div>
-  &nbsp&nbsp&nbsp&nbsp
-  <button type="submit" class="btn btn-primary">Search<i class="icon-search"></i></button>
-   <td> <a href="/dashboard" class="btn btn-primary">Cancel </a></td></tr> </table>
+<p><b>Departure Time From</b> &nbsp;&nbsp;<input name= "DepTimel" placeholder="Type something…" type="text" /></p>
+
+<p><b>Departure Time To</b> &nbsp;&nbsp;<input name= "DepTimeh" placeholder="Type something…" type="text" /></p>
+
+<p>&nbsp;</p>
+
+<p><button class="btn" contenteditable="true" type="submit">Search</button></p>
+</fieldset>
 </form>
-<br>
-
-    <% if(movies!=null){movies.forEach( function ( movies ){ %>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <a href="/viewMoviePage/<%= movies.id %>"><h3 class="panel-title"> <%= movies.MovieName %></h3> </a>
-            
-            <div>Id: <%= movies.id %></div>
-        </div>        
-	</div>
-<% });} %>
-
-</div>
-</body>
