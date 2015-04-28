@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<style>
+		body 		{ padding-top:80px; }
+	</style>
+  </head>
+  
+  <body>
+  <div class="col-sm-6 col-sm-offset-3">
+  <center>
+  	<h2>Order Detail</h2>
+  	<h4>You can view order detail or cancel this order.</h4>
+  </center>
+
+  <div class="panel panel-primary"> 
+  	<div class="panel-heading">Order Information</div>
+  	<div class="panel-body">
+		  		<br><b>First Name:</b> <%= user[0].User_fname%>
+		  		<br><b>Last Name:</b> <%= user[0].User_lname%>
+		  		<br><b>Identity Type:</b> <%= user[0].User_identi_type %>
+		  		<br><b>Identity Number:</b> <%= user[0].User_identi %>
+		  		<br><b>Payment card Number:</b> <%= user[0].User_pay %>
+		  		<br><b>Flight Number:</b> <%= flight[0].Flight_num %>
+		  		<br><b>Flying From:</b> <%= flight[0].Flight_scity %>
+		  		<br><b>Flying To:</b> <%= flight[0].Flight_ecity %>
+		  		<br><b>Departing:</b> <%= flight[0].Flight_stime %>
+		  		<br><b>Arriving:</b> <%= flight[0].Flight_etime %>
+		  		<br><b>Flight Model:</b> <%= flight[0].Flight_model %>
+		  		<br><b>Flight Company:</b> <%= flight[0].Flight_company %>
+		  		<br><b>Seat Type:</b> <%= seat %>
+		  		<br><b>Price ($):</b> <%= price%>
+	            
+  	</div>
+  </div>
+
+  
+  </div>
+</body>
+</html>

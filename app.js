@@ -67,6 +67,8 @@ app.post('/signin',passport.authenticate('local-login',{ successRedirect:'/searc
     failureFlash:true}) 
     );
 app.get('/search',isLoggedIn, user.search);
+app.post('/search',isLoggedIn, user.aftersearch);
+app.post('/order', isLoggedIn, user.order);
 
 
 
