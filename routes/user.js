@@ -7,6 +7,38 @@ exports.signin = function(req, res){
   res.render('signin.ejs', {message: req.flash('loginMessage')});
   };
  
+exports.signup = function(req,res){
+  res.render('signup.ejs');
+};
+
+exports.aftersignup = function(req,res){
+	var email = req.param("email");
+	var password = req.param("password");
+	var fname = req.param("fname");
+	var lname = req.param("lname");
+	var birth = req.param("birth");
+	var address = req.param("address");
+	var zip = req.param("zip");
+	var id = req.param("id");
+	var idType = req.param("idType");
+	var pay = req.param("pay");
+	var sql = "INSERT INTO User SET User_email= '"+email+"', User_password = '"+password+"', User_fname = '"+fname+"', User_lname = '"+lname+
+	          "', User_birth = '"+birth+"', User_address = '"+address+"', User_zip = '"+zip+"', User_identi='"+id+"',User_identi_type='"+idType+
+	          "', User_pay = '"+pay+"'";
+	db.getConnection(function(err,connection){
+		var query = connection.query(sql,function(err,results){
+			if(err){
+				console.log("err message: "+ err.message);
+			}else{
+				console.log("info:"+results);
+				connection.release();
+				res.redirect('/');
+			}
+		})
+	})
+	
+};
+
 exports.logout = function(req,res){
 	req.logout();
 	res.redirect('/');

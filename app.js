@@ -77,6 +77,8 @@ app.get('/cancel/:Hid', isLoggedIn, user.cancel);
 app.get('/edit', isLoggedIn, user.edit);
 app.post('/edit', isLoggedIn, user.editUser);
 app.get('/logout',isLoggedIn, user.logout);
+app.get('/signup',user.signup);
+app.post('/signup', user.aftersignup);
 
 
 

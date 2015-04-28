@@ -1,0 +1,71 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<%- include header %>
+<html>
+<head>
+	<title>Fluffy!</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+	<style>
+		body 		{ padding-top:80px; }
+	</style>
+</head>
+<body>
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+
+	<h1><span class="fa fa-sign-in"></span> Sign Up</h1>
+
+
+	<!-- SIGNUP FORM -->
+	<form action="/signup" method="post">
+		<div class="form-group">
+			<label>Email</label>
+			<input type="email" class="form-control" name="email" required>
+		</div>
+		<div class="form-group">
+			<label>Password</label>
+			<input type="password" class="form-control" name="password" required>
+		</div>
+		<div class="form-group">
+			<label>First Name</label>
+			<input type="text" class="form-control" name="fname" required>
+		</div>
+		<div class="form-group">
+			<label>Last Name</label>
+			<input type="text" class="form-control" name="lname" required>
+		</div>
+		<div class="form-group">
+			<label>Birthday</label>
+			<input type="text" class="form-control" name="birth" required>
+		</div>
+		<div class="form-group">
+			<label>Address</label>
+			<input type="text" class="form-control" name="address" required>
+		</div>
+		<div class="form-group">
+			<label>Zip</label>
+			<input type="text" class="form-control" name="zip" required>
+		</div>
+		<div class="form-group">
+			<label>ID Number</label>
+			<input type="text" class="form-control" name="id" required>
+		</div>
+		<div class="form-group">
+			<label>ID Type</label>
+			<input type="text" class="form-control" name="idType" required>
+		</div>
+		<div class="form-group">
+			<label>Payment card Number</label>
+			<input type="text" class="form-control" name="pay" required>
+		</div>
+		<button type="submit" class="btn btn-warning btn-lg">Sign UP</button>
+	</form>
+
+
+</div>
+
+</div>
+</body>
+</html>
